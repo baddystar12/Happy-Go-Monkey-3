@@ -16,14 +16,15 @@ function preload(){
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
-   jungle = createSprite(displayWidth*4, displayHeight);
+   /*jungle = createSprite(displayWidth*4, displayHeight);
   jungle.addImage(jungleImage);
-  jungle.scale = 3;
+  jungle.scale = 3;*/
   monkey = createSprite(80, displayHeight-75, 20, 20);
   monkey.addAnimation("running",monkey_running);
   monkey.scale = 0.1;
-  ground = createSprite(displayWidth/2, displayHeight-50, displayWidth-20, 10);
-  console.log(ground.x);
+  ground = createSprite(displayWidth/2, displayHeight-50, displayWidth*7, 10);
+  //console.log(ground.x);
+  ground.visible = false;
   obstaclesGroup = createGroup();
   foodGroup = createGroup();
   monkey.setCollider("rectangle",0,0,10, monkey.height);
@@ -32,14 +33,15 @@ function setup() {
 
 
 function draw() {
-background(jungleImage);
+background("purple");
 if(gameState===PLAY){
   x = x+4;
+  image(jungleImage, 0,0,displayWidth*5, displayHeight);
   camera.position.x = displayWidth+x;
   camera.position.y = displayHeight/2;
   monkey.x = camera.position.x - 250;
-  ground.x = camera.position.x;
-  jungleImage.x = camera.position.x;
+  //ground.x = camera.position.x;
+  //jungleImage.x = camera.position.x;
   if(keyDown("space")|| touches.length>0) {
         monkey.velocityY = -12;
     touches=[];
@@ -47,27 +49,28 @@ if(gameState===PLAY){
    monkey.velocityY = monkey.velocityY+1.2;
   spawnObstacles();
   spawnBananas();
-  ground.visible = true;
-  }
+  
   if(frameCount>900){
     gameState = END;
   }
   /*if(obstaclesGroup.isTouching(monkey)){
     gameState = END;
   }*/
-  if(obstaclesGroup.isTouching(monkey)){
+  if(obstaclesGroup.isTouching(monkey)&&survivalTime>0 ){
     survivalTime = survivalTime - 1;
-  }
-  if(gameState===END){
-    stroke("#3107ad");
-    textSize(20);
-    strokeWeight(4);
-    text("Game Over", displayWidth/2, displayHeight/2);
   }
   monkey.collide(ground);
   ground.visible=false;
   drawSprites();
   survivalTimeScore();
+}
+if(gameState===END){
+  stroke("white");
+  textSize(20);
+  strokeWeight(4);
+  text("Game Over", displayWidth/2, displayHeight/2);
+  survivalTimeScore();  
+}
 }
 function survivalTimeScore(){
   stroke("red");
