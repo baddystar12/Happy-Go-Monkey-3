@@ -8,10 +8,10 @@ var gameState = PLAY;
 var x = 0;
 var y;
 function preload(){
-  monkey_running = loadAnimation("images/sprite_0.png","images/sprite_1.png","images/sprite_2.png","images/sprite_3.png","images/sprite_4.png","images/sprite_5.png","images/sprite_6.png","images/sprite_7.png","images/sprite_8.png");
-  bananaImage = loadImage("images/banana.png");
-  obstacleImage = loadImage("images/obstacle.png");
-  jungleImage = loadImage("images/jungle.jpg");
+  monkey_running = loadAnimation("Images/sprite_0.png","Images/sprite_1.png","Images/sprite_2.png","Images/sprite_3.png","Images/sprite_4.png","Images/sprite_5.png","Images/sprite_6.png","Images/sprite_7.png","Images/sprite_8.png");
+  bananaImage = loadImage("Images/banana.png");
+  obstacleImage = loadImage("Images/obstacle.png");
+  jungleImage = loadImage("Images/jungle.jpg");
 }
 
 function setup() {
@@ -66,9 +66,11 @@ if(gameState===PLAY){
 }
 if(gameState===END){
   stroke("white");
-  textSize(20);
+  textSize(200);
   strokeWeight(4);
   text("Game Over", displayWidth/2, displayHeight/2);
+  camera.position.x = 0;
+  camera.position.y = 0;
   survivalTimeScore();  
 }
 }
