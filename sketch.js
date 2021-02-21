@@ -8,10 +8,10 @@ var gameState = PLAY;
 var x = 0;
 var y;
 function preload(){
-  monkey_running = loadAnimation("sprite_0.png"," sprite_1.png"," sprite_2.png"," sprite_3.png"," sprite_4.png"," sprite_5.png"," sprite_6.png"," sprite_7.png"," sprite_8.png");
-  bananaImage = loadImage("banana.png");
-  obstacleImage = loadImage("obstacle.png");
-  jungleImage = loadImage("jungle.jpg");
+  monkey_running = loadAnimation("images/sprite_0.png"," images/sprite_1.png"," images/sprite_2.png"," images/sprite_3.png"," images/sprite_4.png"," images/sprite_5.png"," images/sprite_6.png"," images/sprite_7.png"," images/sprite_8.png");
+  bananaImage = loadImage("images/banana.png");
+  obstacleImage = loadImage("images/obstacle.png");
+  jungleImage = loadImage("images/jungle.jpg");
 }
 
 function setup() {
